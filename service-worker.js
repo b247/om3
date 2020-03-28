@@ -5,7 +5,7 @@
 /* A version number is useful when updating the worker logic,
    allowing you to remove outdated cache entries during the update.
 */
-var version = 'cv2::';
+var version = 'cv3::';
 
 /* These resources will be downloaded and cached by the service worker
    during the installation process. If any resource fails to be downloaded,
@@ -19,18 +19,19 @@ var offlineFundamentals = [
   'favicons/favicon-32x32.png',
   'favicons/favicon-16x16.png',
 
-  'css/vendors/bootstrap.min.css?v=4.1.3',
-  'css/vendors/font-awesome-4.7.0/css/font-awesome.min.css?v=4.7.0',
-  'css/vendors/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0',
-  'css/vendors/font-awesome-4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0',
+  'css/vendors/bootstrap.min.css',
+  'css/vendors/font-awesome-4.7.0/css/font-awesome.min.css',
+  'css/vendors/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2',
+  'css/vendors/font-awesome-4.7.0/fonts/fontawesome-webfont.woff',
+  'css/main.min.css',
 
 
-  'jslibs/vendors/jquery.min.js?v=3.4.1',
-  'jslibs/vendors/jspdf.min.js?v=1.5.3',
-  'jslibs/vendors/jSignature.min.js?v=2.1.3',
+  'jslibs/vendors/jquery.min.js',
+  'jslibs/vendors/jspdf.min.js',
+  'jslibs/vendors/jSignature.min.js',
 
-  'jslibs/assets.js?v=1.0.1',
-  'jslibs/main.js?v=1.2.1',
+  'jslibs/assets.js',
+  'jslibs/main.min.js',
 ];
 
 /* The install event fires when the service worker is first installed.

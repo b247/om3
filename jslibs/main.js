@@ -53,6 +53,7 @@ $(function () {
 	})
 
 	$("#delaratie").submit(function(e){
+		$('#loading-container').toggleClass('invisible')
 		e.preventDefault()
 		data = $(this).serializeArray()
 		var data_completare = new Date().toJSON().slice(0,10).split('-').reverse().join('.');
@@ -84,6 +85,8 @@ $(function () {
 
 		doc.text(positions['data_completare'][0], positions['data_completare'][1], data_completare);
 
-		doc.save(form_data.nume + ' ' +form_data.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020.pdf')
+		// doc.save(form_data.nume + ' ' +form_data.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020.pdf')
+		var docname = form_data.nume + ' ' +form_data.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020.pdf';
+		doc.save(docname, { returnPromise: true }).then( setTimeout(function(){ $('#loading-container').toggleClass('invisible') }, 700) );
 	})
 })
