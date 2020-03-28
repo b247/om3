@@ -8,12 +8,12 @@ div#signature-container {position:relative;}
   width: 200px;
   height: 200px;
   overflow: hidden;
-  background: none;
-  position: absolute;
-  left: 50vh;
-  margin-left: -100px;
-  /*top: 50vh;*/
-  margin-top: -100px;
+  /*background: url('../favicons/apple-touch-icon.png') center center no-repeat;*/
+  position: fixed;
+  left: 50%;
+  /*margin-left: -100px;*/
+  top: 50%;
+  /*margin-top: -100px;*/
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 

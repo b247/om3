@@ -5,7 +5,7 @@
 /* A version number is useful when updating the worker logic,
    allowing you to remove outdated cache entries during the update.
 */
-var version = 'cv3::';
+var version = 'cv4::';
 
 /* These resources will be downloaded and cached by the service worker
    during the installation process. If any resource fails to be downloaded,
@@ -14,7 +14,6 @@ var version = 'cv3::';
 var offlineFundamentals = [
   '',
 
-  'favicons/apple-touch-icon.png',
   'favicons/apple-touch-icon.png',
   'favicons/favicon-32x32.png',
   'favicons/favicon-16x16.png',
