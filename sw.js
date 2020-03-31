@@ -7,7 +7,7 @@ var precacheConfig = [
 ["/favicons/apple-touch-icon.png","dc80e5636db8fc5d7b5f999dc5d5ead4"],
 ["/favicons/android-chrome-192x192.png","android-chrome-192x192.png"],
 ["/favicons/favicon-32x32.png","d4e0ccce4b98c36e2f2f5503c596b1ee"],
-["/favicons/site.webmanifest","9d59cdeccc2ae48947a7a7ca4253a552"],
+["/favicons/site.webmanifest?v=2.0.3","9d59cdeccc2ae48947a7a7ca4253a552"],
 ["/index.html","cf5c23f5244ea1c6ad6aeebf665a4e2c"],
 ["/jslibs/assets.js","45a5a174acf75a51514ddd93406b1a05"],
 ["/jslibs/main.min.js","d94156adcd7e1fccfd41fb8a02e59e39"],
@@ -15,7 +15,7 @@ var precacheConfig = [
 ["/jslibs/vendors/jquery.min.js","220afd743d9e9643852e31a135a9f3ae"],
 ["/jslibs/vendors/jspdf.min.js","cf869e54b0b882862e545346a3d82649"],
 ];
-var cacheName = 'sw-precache-cv3--' + (self.registration ? self.registration.scope : '');
+var cacheName = 'sw-precache-cv5--' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
 
 
@@ -162,20 +162,26 @@ self.addEventListener('activate', function(event) {
   var setOfExpectedUrls = new Set(urlsToCacheKeys.values());
 
   event.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      return cache.keys().then(function(existingRequests) {
-        return Promise.all(
-          existingRequests.map(function(existingRequest) {
-            if (!setOfExpectedUrls.has(existingRequest.url)) {
-              return cache.delete(existingRequest);
-            }
-          })
-        );
-      });
-    }).then(function() {
-      
-      return self.clients.claim();
-      
+  	 caches.keys().then(keys => Promise.all(
+      keys.map(key => {
+        if (!cacheName.includes(key)) {
+          return caches.delete(key);
+        }
+      })
+    )).then(() => {
+         caches.open(cacheName).then(function(cache) {
+	      return cache.keys().then(function(existingRequests) {
+	        return Promise.all(
+	          existingRequests.map(function(existingRequest) {
+	            if (!setOfExpectedUrls.has(existingRequest.url)) {
+	              return cache.delete(existingRequest);
+	            }
+	          })
+	        );
+	      });
+	    }).then(function() {
+			return self.clients.claim();
+	    })
     })
   );
 });
