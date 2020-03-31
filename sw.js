@@ -15,7 +15,7 @@ var precacheConfig = [
 ["/jslibs/vendors/jquery.min.js?v=3.4.1","220afd743d9e9643852e31a135a9f3ae"],
 ["/jslibs/vendors/jspdf.min.js?v=1.5.3","cf869e54b0b882862e545346a3d82649"],
 ];
-var cacheName = 'sw-precache-cv1.3.1--' + (self.registration ? self.registration.scope : '');
+var cacheName = 'sw-precache-cv1.3.2--' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
 
 
