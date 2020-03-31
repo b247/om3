@@ -1,9 +1,9 @@
 'use strict';
 
 var precacheConfig = [
-["/css/main.min.css","c6a78b114a75850380b94f56e23cda82"],
-["/css/vendors/bootstrap.min.css","04aca1f4cd3ec3c05a75a879f3be75a3"],
-["/css/vendors/font-awesome-4.7.0/css/font-awesome.min.css","269550530cc127b6aa5a35925a7de6ce"],
+["/css/main.min.css?v=1.3.0","c6a78b114a75850380b94f56e23cda82"],
+["/css/vendors/bootstrap.min.css?v=4.1.3","04aca1f4cd3ec3c05a75a879f3be75a3"],
+["/css/vendors/font-awesome-4.7.0/css/font-awesome.min.css?v=4.7.0","269550530cc127b6aa5a35925a7de6ce"],
 ["/favicons/apple-touch-icon.png","dc80e5636db8fc5d7b5f999dc5d5ead4"],
 ["/favicons/android-chrome-192x192.png","android-chrome-192x192.png"],
 ["/favicons/favicon-32x32.png","d4e0ccce4b98c36e2f2f5503c596b1ee"],
@@ -11,9 +11,9 @@ var precacheConfig = [
 ["/index.html","a8cfb9e212f8d0fe70f9ea9594def44d"],
 ["/jslibs/assets.js?v=1.1.0","d45aea3daa40771e314c4c8e18ab376d"],
 ["/jslibs/main.min.js?v=1.5.1","4fe4b9c2099c431c037f2910b07c512e"],
-["/jslibs/vendors/jSignature.min.js","4dc38fc88461b30ab711f9cff96f5514"],
-["/jslibs/vendors/jquery.min.js","220afd743d9e9643852e31a135a9f3ae"],
-["/jslibs/vendors/jspdf.min.js","cf869e54b0b882862e545346a3d82649"],
+["/jslibs/vendors/jSignature.min.js?v=2.1.3","4dc38fc88461b30ab711f9cff96f5514"],
+["/jslibs/vendors/jquery.min.js?v=3.4.1","220afd743d9e9643852e31a135a9f3ae"],
+["/jslibs/vendors/jspdf.min.js?v=1.5.3","cf869e54b0b882862e545346a3d82649"],
 ];
 var cacheName = 'sw-precache-cv1.3.1--' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
