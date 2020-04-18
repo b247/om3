@@ -4,6 +4,15 @@ div#signature-container {position:relative;}
 .pointer {cursor: pointer;}
 #signature-reset {position: absolute;right: 8px;top: 50px;}
 
+#android-downloads {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+
+}
+
 #loading-container {
   width: 200px;
   height: 200px;

@@ -9,7 +9,10 @@ if ('serviceWorker' in navigator) {
 	console.log('CLIENT: service worker is not supported.');
 }
 
-let form_data = {}
+
+
+
+let formData = {}
 let positions = {
 	nume : [56.808, 39.195],
 	prenume : [119.267,39.195],
@@ -30,33 +33,45 @@ let positions = {
 	motivul_deplasarii_8 : [32.409, 189.7],
 	motivul_deplasarii_9 : [32.409, 195.3],
 	motivul_deplasarii_10 : [32.409, 200.965],
-	data_completare : [56.308, 236],
+	today : [56.308, 236],
 	semnatura : [125, 231.809],
 }
 
+
+
 $(function () {
 
-	var $sigcontainer = $("#signature-container")
-	var $sigreset = $("#signature-reset")
-	var $sigdiv = $("#signature")
-	$sigdiv.jSignature()
-	$sigreset.click(function(e){$sigdiv.jSignature('reset')})
-	$sigdiv.on('change', function(e){
-		// $sigdata = $(this).jSignature('getData','svgbase64')
-		$sigdata = $(this).jSignature('getData')
-		if($sigdata[1].length == 312) {
-			$("#signature-container :input").val('');
+	let generatePdfBtn = $('#generatePdfBtn');
+
+	let loadingDiv = $('#loading-container');
+	let declaratieForm = $('#declaratie');
+	let signatureBlackboard = $("#signature-container");
+	let signatureBlackboardReset = $("#signature-reset");
+	let signatureHolographic = $("#signature");
+
+	signatureHolographic.jSignature();
+	signatureBlackboardReset.click(function(e){signatureHolographic.jSignature('reset')});
+	signatureHolographic.on('change', function(e){
+		// signatureVector = $(this).jSignature('getData','svgbase64')
+		signatureVector = signatureHolographic.jSignature('getData')
+		if(signatureVector[1].length == 312) {
+			signatureBlackboard.find(':input').val(null);
 		} else {
-			$("#signature-container :input").val($sigdata);
+			signatureBlackboard.find(':input').val(signatureVector);
 		}
 		
 	})
 
-	$("#delaratie").submit(function(e){
-		$('#loading-container').toggleClass('invisible')
-		e.preventDefault()
-		data = $(this).serializeArray()
-		var data_completare = new Date().toJSON().slice(0,10).split('-').reverse().join('.');
+	generatePdfBtn.click(function(){
+		generatePdfBtn.prop('disabled',true);
+		loadingDiv.removeClass('d-none');
+		declaratieForm.trigger('submit');
+	})
+	declaratieForm.submit(function(e){
+		e.preventDefault();
+
+		var sData = $(this).serializeArray()
+		var today = new Date().toJSON().slice(0,10).split('-').reverse().join('.');
 
 		var doc = new jsPDF('p', 'mm', 'a4', true);
 		doc.addFileToVFS("Merriweather_Regular.ttf", Merriweather_Regular);
@@ -66,27 +81,27 @@ $(function () {
 		// doc.setTextColor('#004890');
 		doc.addImage(background, 'PNG', 0, 0, 210, 297);
 
-		for(var field in data) {
-			if(typeof positions[data[field].name] !== 'undefined') {
-				if (data[field].value == 'check') {
-					doc.circle(positions[data[field].name][0] + 1.5, positions[data[field].name][1] + 1.5, 2, 'F');
-				} else if (data[field].name == 'semnatura') {
-					var semnatura = doc.getImageProperties(data[field].value);
+		for(var field in sData) {
+			if(typeof positions[sData[field].name] !== 'undefined') {
+				if (sData[field].value == 'check') {
+					doc.circle(positions[sData[field].name][0] + 1.5, positions[sData[field].name][1] + 1.5, 2, 'F');
+				} else if (sData[field].name == 'semnatura') {
+					var semnatura = doc.getImageProperties(sData[field].value);
 					var ratio = semnatura.width / semnatura.height;
 					var height = 17;
 					var width = height * ratio;
-					doc.addImage(data[field].value, 'PNG', positions[data[field].name][0], positions[data[field].name][1] + 10 - height, width, height);
+					doc.addImage(sData[field].value, 'PNG', positions[sData[field].name][0], positions[sData[field].name][1] + 10 - height, width, height);
 				} else {
-					doc.text(positions[data[field].name][0] + 1, positions[data[field].name][1] + 5, data[field].value);
+					doc.text(positions[sData[field].name][0] + 1, positions[sData[field].name][1] + 5, sData[field].value);
 				}
-				form_data[data[field].name] = data[field].value;
+				formData[sData[field].name] = sData[field].value;
 			}
 		}
 
-		doc.text(positions['data_completare'][0], positions['data_completare'][1], data_completare);
+		doc.text(positions['today'][0], positions['today'][1], today);
 
-		// doc.save(form_data.nume + ' ' +form_data.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020.pdf')
-		var docname = form_data.nume + ' ' +form_data.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020.pdf';
-		doc.save(docname, { returnPromise: true }).then( setTimeout(function(){ $('#loading-container').toggleClass('invisible') }, 700) );
+
+		var docname = formData.nume + ' ' +formData.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020 - '+today+'.pdf';
+		doc.save(docname, { returnPromise: true }).then( setTimeout(function(){ loadingDiv.addClass('d-none'); generatePdfBtn.prop('disabled',false); }, 700) );
 	})
 })
