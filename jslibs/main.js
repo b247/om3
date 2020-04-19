@@ -37,6 +37,26 @@ let positions = {
 	semnatura : [125, 231.809],
 }
 
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    return "unknown";
+}
+let mobileOS = getMobileOperatingSystem();
 
 
 $(function () {
@@ -48,6 +68,7 @@ $(function () {
 	let signatureBlackboard = $("#signature-container");
 	let signatureBlackboardReset = $("#signature-reset");
 	let signatureHolographic = $("#signature");
+	let androidIndicator = $("#android-downloads-indicator");
 
 	signatureHolographic.jSignature();
 	signatureBlackboardReset.click(function(e){signatureHolographic.jSignature('reset')});
@@ -103,6 +124,13 @@ $(function () {
 
 
 		var docname = 'DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020, ' + formData.nume + ' ' +formData.prenume +', '+today+'.pdf';
-		doc.save(docname, { returnPromise: true }).then( setTimeout(function(){ loadingDiv.addClass('d-none'); generatePdfBtn.prop('disabled',false); }, 700) );
+		doc.save(docname, { returnPromise: true }).then( setTimeout(function(){
+			loadingDiv.addClass('d-none');
+			generatePdfBtn.prop('disabled',false);
+			if (mobileOS == 'Android') {
+				androidIndicator.removeClass('d-none');
+				setTimeout(function(){ androidIndicator.addClass('d-none');}, 5000);
+			}
+		}, 700) );
 	})
 })
