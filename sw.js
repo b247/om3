@@ -15,13 +15,13 @@ var precacheConfig = [
 
 ["/jslibs/assets.js?v=1.1.0","d45aea3daa40771e314c4c8e18ab376d"],
 
-["/jslibs/main.min.js","1cbc1f695f0f4d8e393152fdff5d1723"],
+["/jslibs/main.min.js","acbfc107580f2baf732cbfd0b163d1a1"],
 
 ["/jslibs/vendors/jSignature.min.js?v=2.1.3","4dc38fc88461b30ab711f9cff96f5514"],
 ["/jslibs/vendors/jquery.min.js?v=3.4.1","220afd743d9e9643852e31a135a9f3ae"],
 ["/jslibs/vendors/jspdf.min.js?v=1.5.3","cf869e54b0b882862e545346a3d82649"],
 ];
-var cacheName = 'sw-precache-cv2.0.0-' + (self.registration ? self.registration.scope : '');
+var cacheName = 'sw-precache-cv2.0.1-' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
 
 

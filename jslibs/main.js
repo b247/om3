@@ -69,11 +69,7 @@ $(function () {
 		loadingDiv.removeClass('d-none');
 
 		var sData = declaratieForm.find(':input').not('#semnatura').serializeArray();
-		console.log(sData);
-
 		signatureVector = signatureHolographic.jSignature('getData');
-		console.log(signatureVector);
-		return false;
 
 		var today = new Date().toJSON().slice(0,10).split('-').reverse().join('.');
 
