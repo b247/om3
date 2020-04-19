@@ -51,26 +51,30 @@ $(function () {
 
 	signatureHolographic.jSignature();
 	signatureBlackboardReset.click(function(e){signatureHolographic.jSignature('reset')});
-	signatureHolographic.on('change', function(e){
-		// signatureVector = $(this).jSignature('getData','svgbase64')
-		signatureVector = signatureHolographic.jSignature('getData')
-		if(signatureVector[1].length == 312) {
-			signatureBlackboard.find(':input').val(null);
-		} else {
-			signatureBlackboard.find(':input').val(signatureVector);
-		}
+	// signatureHolographic.on('change', function(e){
+	// 	// signatureVector = $(this).jSignature('getData','svgbase64')
+	// 	signatureVector = signatureHolographic.jSignature('getData')
+	// 	if(signatureVector[1].length == 312) {
+	// 		signatureBlackboard.find(':input').val(null);
+	// 	} else {
+	// 		signatureBlackboard.find(':input').val(signatureVector);
+	// 	}
 		
-	})
+	// })
 
-	generatePdfBtn.click(function(){
-		generatePdfBtn.prop('disabled',true);
-		loadingDiv.removeClass('d-none');
-		declaratieForm.trigger('submit');
-	})
 	declaratieForm.submit(function(e){
 		e.preventDefault();
 
-		var sData = $(this).serializeArray()
+		generatePdfBtn.prop('disabled',true);
+		loadingDiv.removeClass('d-none');
+
+		var sData = declaratieForm.find(':input').not('#semnatura').serializeArray();
+		console.log(sData);
+
+		signatureVector = signatureHolographic.jSignature('getData');
+		console.log(signatureVector);
+		return false;
+
 		var today = new Date().toJSON().slice(0,10).split('-').reverse().join('.');
 
 		var doc = new jsPDF('p', 'mm', 'a4', true);
@@ -86,7 +90,8 @@ $(function () {
 				if (sData[field].value == 'check') {
 					doc.circle(positions[sData[field].name][0] + 1.5, positions[sData[field].name][1] + 1.5, 2, 'F');
 				} else if (sData[field].name == 'semnatura') {
-					var semnatura = doc.getImageProperties(sData[field].value);
+					// var semnatura = doc.getImageProperties(sData[field].value);
+					var semnatura = doc.getImageProperties(signatureVector);
 					var ratio = semnatura.width / semnatura.height;
 					var height = 17;
 					var width = height * ratio;
@@ -101,7 +106,7 @@ $(function () {
 		doc.text(positions['today'][0], positions['today'][1], today);
 
 
-		var docname = formData.nume + ' ' +formData.prenume + ' - DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020 - '+today+'.pdf';
+		var docname = 'DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020, ' + formData.nume + ' ' +formData.prenume +', '+today+'.pdf';
 		doc.save(docname, { returnPromise: true }).then( setTimeout(function(){ loadingDiv.addClass('d-none'); generatePdfBtn.prop('disabled',false); }, 700) );
 	})
 })

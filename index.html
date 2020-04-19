@@ -2,7 +2,7 @@
 <html lang='ro'>
 <head>
 
-	<title>DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020, se poate semna online - GDPR compliant</title>
+	<title>DECLARAȚIE PE PROPRIE RĂSPUNDERE cf. Ordonanța Militară nr. 3/2020, se poate semna olograf pe telefon, online - GDPR compliant</title>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -39,21 +39,22 @@
 
 	<link rel="stylesheet" href="css/vendors/bootstrap.min.css?v=4.1.3">
 	<link rel="stylesheet" href="css/vendors/font-awesome-4.7.0/css/font-awesome.min.css?v=4.7.0">
-	<!-- <link rel="stylesheet" href="css/main.css?v=1.3.1"> -->
-	<link rel="stylesheet" href="css/main.min.css?v=1.3.1">
+	<!-- <link rel="stylesheet" href="css/main.css?v=1.3.2"> -->
+	<link rel="stylesheet" href="css/main.min.css">
 
 	<script src="jslibs/vendors/jquery.min.js?v=3.4.1"></script>
 	<script src="jslibs/vendors/jspdf.min.js?v=1.5.3"></script>
 	<script src="jslibs/vendors/jSignature.min.js?v=2.1.3"></script>
 	
 	<script src="jslibs/assets.js?v=1.1.0"></script>
-	<!-- <script src="jslibs/main.js?v=1.6.9"></script> -->
-	<script src="jslibs/main.min.js?v=1.6.9"></script>
+
+	<!-- <script src="jslibs/main.js?v=1.6.11"></script> -->
+	<script src="jslibs/main.min.js"></script>
 
 </head>
 
 <body>
-	<form role="form" id="declaratie">
+	<form role="form" method="put" id="declaratie">
 	<div class="container">
 
 		<div class="p-4"></div>
@@ -184,7 +185,6 @@
 
 	  <div class="text-left"><strong>Persoanele care au împlinit vârsta de 65 de ani completează doar pentru motivele prevăzute în câmpurile 1-6, deplasarea fiind permisă zilnic doar în intervalul orar 11.00 – 13.00, iar în afara intervalului pentru motivele de la punctul 1 și punctul 6.</strong></div>
 
-	  <!-- <div class="p-2"></div> -->
 	  <div id="signature-container" class="form-group">
 	  	<label class="col-form-label">Semnătura</label> 
 		<div id="signature" class=""></div>
@@ -199,11 +199,11 @@
 	</div>
 	</form>
 
-	<div id="loading-container" class="d-none"><div class="loading"><div></div></div></div>
+	
 	<div class="container-fluid text-left"><i class="fa fa-fw fa-lg fa-github"></i><em><sup>1)</sup> aplicaţie FOSS - cod sursa disponibil la <a rel="license nofollow noopener" target="_blank" href="https://github.com/b247/om3">https://github.com/b247/om3</a>. Datele introduse în formular nu părăsesc calculatorul/dispozitivul de accesare. Proiect susţinut de <a rel="me" target="_blank" href="https://www.b247.eu.org">b247.eu.org</a>.</em></div>
 	<div class="p-2"></div>
-
-	<!-- <img src="images/android-swipe-down-notification-panel.gif" id="android-downloads" class="d-none2" /> -->
+	<div id="loading-container" class="d-none"><div class="loading"><div></div></div></div>
+	<!-- <img src="images/android-swipe-down-notification-panel.gif" id="android-downloads-indicator" class="d-none" /> -->
 	
 </body>
 </html>

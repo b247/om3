@@ -4,29 +4,25 @@ div#signature-container {position:relative;}
 .pointer {cursor: pointer;}
 #signature-reset {position: absolute;right: 8px;top: 50px;}
 
-#android-downloads {
+#android-downloads-indicator {
   position: fixed;
+  width: 100%;
   top: 0;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-
+  z-index: 2;
 }
 
 #loading-container {
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  /*background: url('../favicons/apple-touch-icon.png') center center no-repeat;*/
-  position: fixed;
-  left: 50%;
-  /*margin-left: -100px;*/
-  top: 50%;
-  /*margin-top: -100px;*/
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 2;
 }
+
 @keyframes loading {
   0% { transform: rotate(0deg) }
   50% { transform: rotate(180deg) }
