@@ -2,7 +2,7 @@
 
 var precacheConfig = [
 
-["/css/main.min.css","2c8741f8054faccafff13c704739377a"],
+["/css/main.min.css?v=2.0.2","2c8741f8054faccafff13c704739377a"],
 
 ["/css/vendors/bootstrap.min.css?v=4.1.3","04aca1f4cd3ec3c05a75a879f3be75a3"],
 ["/css/vendors/font-awesome-4.7.0/css/font-awesome.min.css?v=4.7.0","269550530cc127b6aa5a35925a7de6ce"],
@@ -11,17 +11,17 @@ var precacheConfig = [
 ["/favicons/favicon-32x32.png","d4e0ccce4b98c36e2f2f5503c596b1ee"],
 ["/favicons/site.webmanifest?v=2.0.4","5d66a51d906127a7da10bc3edbd2fdad"],
 
-["/index.html","8e7adcb4523935c3c345683d5623fbc5"],
+["/index.html","2ac9a77cc7286ab5c78db0b0d3fd9f71"],
 
 ["/jslibs/assets.js?v=1.1.0","d45aea3daa40771e314c4c8e18ab376d"],
 
-["/jslibs/main.min.js","acbfc107580f2baf732cbfd0b163d1a1"],
+["/jslibs/main.min.js?v=2.0.2","acbfc107580f2baf732cbfd0b163d1a1"],
 
 ["/jslibs/vendors/jSignature.min.js?v=2.1.3","4dc38fc88461b30ab711f9cff96f5514"],
 ["/jslibs/vendors/jquery.min.js?v=3.4.1","220afd743d9e9643852e31a135a9f3ae"],
 ["/jslibs/vendors/jspdf.min.js?v=1.5.3","cf869e54b0b882862e545346a3d82649"],
 ];
-var cacheName = 'sw-precache-cv2.0.1-' + (self.registration ? self.registration.scope : '');
+var cacheName = 'sw-precache-v?v=2.0.2-' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
 
 
