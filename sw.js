@@ -2,7 +2,7 @@
 
 var precacheConfig = [
 
-["/css/main.min.css?v=2.0.3","2c8741f8054faccafff13c704739377a"],
+["/css/main.min.css?v=2.0.4","2c8741f8054faccafff13c704739377a"],
 
 ["/css/vendors/bootstrap.min.css?v=4.1.3","04aca1f4cd3ec3c05a75a879f3be75a3"],
 ["/css/vendors/font-awesome-4.7.0/css/font-awesome.min.css?v=4.7.0","269550530cc127b6aa5a35925a7de6ce"],
@@ -12,17 +12,17 @@ var precacheConfig = [
 ["/favicons/site.webmanifest?v=2.0.4","5d66a51d906127a7da10bc3edbd2fdad"],
 ["/images/android-swipe-down-notification-panel.gif","8177d465e6e62c7e384350bb027803b8"],
 
-["/index.html","32e3dd77f571552b9fabca596c5dca24"],
+["/index.html","46e42d312aa8e426d7cd7e26d1bb7ad0"],
 
 ["/jslibs/assets.js?v=1.1.0","d45aea3daa40771e314c4c8e18ab376d"],
 
-["/jslibs/main.min.js?v=2.0.3","d3c0eef36407f2c4959450e672916b26"],
+["/jslibs/main.min.js?v=2.0.4","7d25704f4748ca0728fcf9ffc4a1f40e"],
 
 ["/jslibs/vendors/jSignature.min.js?v=2.1.3","4dc38fc88461b30ab711f9cff96f5514"],
 ["/jslibs/vendors/jquery.min.js?v=3.4.1","220afd743d9e9643852e31a135a9f3ae"],
 ["/jslibs/vendors/jspdf.min.js?v=1.5.3","cf869e54b0b882862e545346a3d82649"],
 ];
-var cacheName = 'sw-precache-v?v=2.0.3-' + (self.registration ? self.registration.scope : '');
+var cacheName = 'sw-precache-v?v=2.0.4-' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
 
 

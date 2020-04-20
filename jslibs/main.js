@@ -106,19 +106,18 @@ $(function () {
 			if(typeof positions[sData[field].name] !== 'undefined') {
 				if (sData[field].value == 'check') {
 					doc.circle(positions[sData[field].name][0] + 1.5, positions[sData[field].name][1] + 1.5, 2, 'F');
-				} else if (sData[field].name == 'semnatura') {
-					// var semnatura = doc.getImageProperties(sData[field].value);
-					var semnatura = doc.getImageProperties(signatureVector);
-					var ratio = semnatura.width / semnatura.height;
-					var height = 17;
-					var width = height * ratio;
-					doc.addImage(sData[field].value, 'PNG', positions[sData[field].name][0], positions[sData[field].name][1] + 10 - height, width, height);
 				} else {
 					doc.text(positions[sData[field].name][0] + 1, positions[sData[field].name][1] + 5, sData[field].value);
 				}
 				formData[sData[field].name] = sData[field].value;
 			}
 		}
+
+		var semnatura_info = doc.getImageProperties(signatureVector);
+		var ratio = semnatura_info.width / semnatura_info.height;
+		var height = 17;
+		var width = height * ratio;
+		doc.addImage(signatureVector, 'PNG', positions['semnatura'][0], positions['semnatura'][1] + 10 - height, width, height);
 
 		doc.text(positions['today'][0], positions['today'][1], today);
 
